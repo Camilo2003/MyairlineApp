@@ -1,0 +1,2 @@
+ID: 1, ID Airplane: 1, Departure: Bogota, Destination: Medellin, Departure Time: 2021-10-10 10:00, Arrival Time: 2021-10-10 11:00, Status: Scheduled
+ID: 2, ID Airplane: 2, Departure: Bogota, Destination: Cali, Departure Time: 2021-10-10 12:00, Arrival Time: 2021-10-10 13:00, Status: Scheduled

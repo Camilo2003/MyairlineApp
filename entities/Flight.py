@@ -9,8 +9,8 @@ from passenger import Passenger
 
 class Flight:
     def __init__(self, id: int, id_airplane: int, passengers: list[Passenger], departure: str, destination: str, departure_time: str, arrival_time: str, status: str) -> None:
-        self.__id = id
-        self.__id_airplane = id_airplane
+        self.__id = int(id)
+        self.__id_airplane = int(id_airplane)
         self.__passengers = passengers
         self.__departure = departure
         self.__destination = destination
@@ -45,10 +45,10 @@ class Flight:
 
     # Setters
     def set_id(self, id):
-        self.__id = id
+        self.__id = int(id)
 
     def set_id_airplane(self, id_airplane):
-        self.__id_airplane = id_airplane
+        self.__id_airplane = int(id_airplane)
 
     def set_departure(self, departure):
         self.__departure = departure
@@ -75,10 +75,7 @@ class Flight:
                 self.__passengers.remove(passenger)
 
     def get_info(self):
-        return f"Flight ID: {self.__id}, Departure: {self.__departure}, Destination: {self.__destination}, Departure Time: {self.__departure_time}, Arrival Time: {self.__arrival_time},"
-
-    def get_info_and_status(self):
-        return f"Flight ID: {self.__id}, Departure: {self.__departure}, Destination: {self.__destination}, Departure Time: {self.__departure_time}, Arrival Time: {self.__arrival_time}, Status: {self.__status}"
+        return f"ID: {self.__id}, ID Airplane: {self.__id_airplane}, Departure: {self.__departure}, Destination: {self.__destination}, Departure Time: {self.__departure_time}, Arrival Time: {self.__arrival_time}, Status: {self.__status}"
 
     def get_passengers_info(self):
         list_info_passengers = []
