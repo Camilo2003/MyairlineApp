@@ -123,6 +123,7 @@ class Airline(metaclass=SingletonMeta):
         else:
             print("Flight not found")
 
+    # This method gets the passengers from the passengers.txt file and add them to the passengers list, and then returns the passenger list.
     def get_passengers(self):
         self.__passengers_list = []
         try:
@@ -138,6 +139,7 @@ class Airline(metaclass=SingletonMeta):
         except Exception as e:
             print(f"An error occurred: {e}")
 
+    # This method receives a document and returns the passenger object if it exists in the passengers list.
     def get_passenger_by_document(self, document: int) -> Passenger:
         self.get_passengers()  # Call the method to get the passengers from the file to the list
         for passenger in self.__passengers_list:
@@ -145,6 +147,57 @@ class Airline(metaclass=SingletonMeta):
                 print(passenger.get_info())
                 return passenger
         return None
+
+    # This method receives a document and removes the passenger from the passengers list and the passengers.txt file.
+    def remove_passenger(self, document: int) -> None:
+        self.get_passengers()
+        for passenger in self.__passengers_list:
+            if passenger.get_document() == document:
+                self.__passengers_list.remove(passenger)
+                with open("passengers.txt", "w") as file:
+                    for passenger in self.__passengers_list:
+                        file.write(f"{passenger.get_info()}\n")
+                return
+        print("Passenger not found")
+
+    # This method receives a flight id and removes the flight from the flights list and the flights.txt file, and also removes all passengers from the passengers list and the passengers.txt file.
+    def remove_flight(self, id_flight):
+        self.get_flights()  # Call the method to get the flights from the file to the list
+        self.get_passengers()  # Call the method to get the passengers from the file to the list
+        for flight in self.__flights_list:
+            if flight.get_id() == id_flight:
+                self.__flights_list.remove(flight)
+                with open("flights.txt", "w") as file:
+                    for flight in self.__flights_list:
+                        file.write(f"{flight.get_info()}\n")
+                # Remove all passengers from the flight because the flight is being removed
+                for passenger in self.__passengers_list:
+                    if passenger.get_id_flight() == id_flight:
+                        self.__passengers_list.remove(passenger)
+                        with open("passengers.txt", "w") as file:
+                            for passenger in self.__passengers_list:
+                                file.write(f"{passenger.get_info()}\n")
+                return
+        print("Flight not found")
+
+    # This method receives an airplane id and removes the airplane from the airplanes list and the airplanes.txt file, and also removes all flights from the flights list and the flights.txt file.
+    def remove_airplane(self, id_airplane):
+        self.get_passengers()  # Call the method to get the passengers from the file to the list
+        self.get_flights()  # Call the method to get the flights from the file to the list
+        self.get_airplanes()  # Call the method to get the airplanes from the file to the list
+
+        for airplane in self.__airplanes_list:
+            if airplane.get_id() == id_airplane:
+                self.__airplanes_list.remove(airplane)
+                with open("airplanes.txt", "w") as file:
+                    for airplane in self.__airplanes_list:
+                        file.write(f"{airplane.get_info()}\n")
+                # Remove all flights from the airplane because the airplane is being removed
+                for flight in self.__flights_list:
+                    if flight.get_id_airplane() == id_airplane:
+                        self.remove_flight(flight.get_id())
+                return
+        print("Airplane not found")
 
 
 # airline = Airline()
@@ -157,6 +210,8 @@ class Airline(metaclass=SingletonMeta):
 # airline.create_flight(2, "Bogota", "Cali",
 #                       "2021-10-10 12:00", "2021-10-10 13:00", 2)
 
+#
+
 # for flight in airline.get_flights():
 #     print(flight.get_info())
 
@@ -168,3 +223,36 @@ class Airline(metaclass=SingletonMeta):
 # airline.create_passenger(9399405, "Luis", "Gomez", 1)
 
 # airline.get_passenger_by_document(987654321)
+
+# for passenger in airline.get_passengers():
+#     print(passenger.get_info())
+# airline.remove_passenger(123456789)
+# for passenger in airline.get_passengers():
+#     print(passenger.get_info())
+
+
+# Example last
+
+# airline.create_airplane(1, "Boeing", "747", 416)
+# airline.create_airplane(2, "Airbus", "A380", 853)
+
+# airline.create_flight(3, "Bogota", "Medellin",
+#                       "2021-10-10 10:00", "2021-10-10 11:00", 1)
+# airline.create_flight(4, "Bogota", "Cali", "2021-10-10 12:00",
+#                       "2021-10-10 13:00", 2)
+# airline.create_flight(5, "Bogota", "Cartagena", "2021-10-10 14:00",
+#                       "2021-10-10 15:00", 1)
+# airline.create_flight(6, "Bogota", "Santa Marta",
+#                       "2021-10-10 16:00", "2021-10-10 17:00", 2)
+
+
+# airline.create_passenger(888001, "Juan", "Perez", 6)
+# airline.create_passenger(888002, "Maria", "Gomez", 5)
+# airline.create_passenger(888003, "Luis", "Gomez", 6)
+# airline.create_passenger(888004, "Mario", "Felipe", 5)
+# airline.create_passenger(888005, "Alex", "Smith", 6)
+# airline.create_passenger(888006, "Jhon", "Doe", 5)
+# airline.create_passenger(888007, "Juana", "Pancha", 4)
+# airline.create_passenger(888008, "Maria", "Perez", 3)
+
+# airline.remove_airplane(2)
