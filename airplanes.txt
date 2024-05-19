@@ -1,4 +1,2 @@
-Airplane ID: 1, Brand: Boeing, Model: 747, Passenger Capacity: 416
-Airplane ID: 2, Brand: Airbus, Model: A380, Passenger Capacity: 853
-Airplane ID: 1, Brand: Boeing, Model: 747, Passenger Capacity: 416
-Airplane ID: 2, Brand: Airbus, Model: A380, Passenger Capacity: 853
+ID: 1, Brand: Boeing, Model: 747, Passenger Capacity: 416, Is on flight: False
+ID: 2, Brand: Airbus, Model: A380, Passenger Capacity: 853, Is on flight: False
