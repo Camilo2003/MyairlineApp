@@ -147,7 +147,7 @@ class Airline(metaclass=SingletonMeta):
         return None
 
 
-airline = Airline()
+# airline = Airline()
 
 # airline.create_airplane(1, "Boeing", "747", 416)
 # airline.create_airplane(2, "Airbus", "A380", 853)
