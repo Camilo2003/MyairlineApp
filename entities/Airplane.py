@@ -1,4 +1,5 @@
 
+# Creation of the Airplane class
 
 # Airplane class
 class Airplane:
@@ -52,9 +53,3 @@ class Airplane:
     def get_info_and_status(self):
         flight_status = "On Flight: Yes" if self.__is_on_flight else "On Flight: No"
         return f"Airplane ID: {self.__id}, Brand: {self.__brand}, Model: {self.__model}, Passenger Capacity: {self.__passenger_capacity}, {flight_status}"
-
-
-# Example
-Airplane1 = Airplane(1, "Boeing", "747", 416)
-
-print(Airplane1.get_info())
