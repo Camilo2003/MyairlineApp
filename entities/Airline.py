@@ -45,6 +45,7 @@ class Airline(metaclass=SingletonMeta):
 
     # This method gets the airplanes from the airplanes.txt file and add them to the airplanes list, and then returns the airplane list.
     def get_airplanes(self):
+        self.__airplanes_list = []
         try:
             with open("airplanes.txt", "r") as file:
                 for line in file:
@@ -85,6 +86,7 @@ class Airline(metaclass=SingletonMeta):
 
     # This method gets the flights from the flights.txt file and add them to the flights list, and then returns the flight list.
     def get_flights(self):
+        self.__flights_list = []
         try:
             with open("flights.txt", "r") as file:
                 for line in file:
@@ -100,10 +102,48 @@ class Airline(metaclass=SingletonMeta):
 
     # This method receives a flight id and returns the flight object if it exists in the flights list.
     def get_flight_by_id(self, id: int) -> Flight:
-        self.get_flights()
+        self.get_flights()  # Call the method to get the flights from the file to the list
         for flight in self.__flights_list:
             if flight.get_id() == id:
                 return flight
+        return None
+
+    # This method creates a new passenger and writes it to the passengers.txt file.
+    def create_passenger(self, document: int, first_name: str, last_name: str, id_flight: int) -> None:
+        # Necessary to check if the flight exists
+        flight = self.get_flight_by_id(id_flight)
+        if flight:
+            passenger = Passenger(document, first_name, last_name, id_flight)
+            try:
+                print(passenger.get_info())
+                with open("passengers.txt", "a") as file:
+                    file.write(f"{passenger.get_info()}\n")
+            except Exception as e:
+                print(f"An error occurred: {e}")
+        else:
+            print("Flight not found")
+
+    def get_passengers(self):
+        self.__passengers_list = []
+        try:
+            with open("passengers.txt", "r") as file:
+                for line in file:
+                    line = line.strip().split(", ")
+                    line = [i.split(": ")[1] for i in line]
+                    passenger = Passenger(
+                        line[0], line[1], line[2], line[3])
+                    # print(passenger.get_info())
+                    self.__passengers_list.append(passenger)
+            return self.__passengers_list
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def get_passenger_by_document(self, document: int) -> Passenger:
+        self.get_passengers()  # Call the method to get the passengers from the file to the list
+        for passenger in self.__passengers_list:
+            if passenger.get_document() == document:
+                print(passenger.get_info())
+                return passenger
         return None
 
 
@@ -121,3 +161,10 @@ airline = Airline()
 #     print(flight.get_info())
 
 # print(airline.get_flight_by_id(1).get_info())
+
+# airline.create_passenger(123456789, "John", "Doe", 1)
+# airline.create_passenger(987654321, "Maria", "Gomez", 2)
+# airline.create_passenger(100286533, "Mario", "Felipe", 1)
+# airline.create_passenger(9399405, "Luis", "Gomez", 1)
+
+# airline.get_passenger_by_document(987654321)

@@ -10,8 +10,8 @@ from person import Person
 # Inheritance from Person class
 class Passenger(Person):
     def __init__(self, document: int, first_name: str, last_name: str, id_flight: int) -> None:
-        super().__init__(document, first_name, last_name)
-        self.__id_flight = id_flight
+        super().__init__(int(document), first_name, last_name)
+        self.__id_flight = int(id_flight)
 
     # Getters
     def get_id_flight(self):
@@ -19,7 +19,7 @@ class Passenger(Person):
 
     # Setters
     def set_id_flight(self, id_flight):
-        self.__id_flight = id_flight
+        self.__id_flight = int(id_flight)
 
     # Methods
     def get_info(self):

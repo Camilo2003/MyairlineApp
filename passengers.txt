@@ -1,0 +1,4 @@
+Document: 123456789, First Name: John, Last Name: Doe, ID Flight: 1
+Document: 987654321, First Name: Maria, Last Name: Gomez, ID Flight: 2
+Document: 100286533, First Name: Mario, Last Name: Felipe, ID Flight: 1
+Document: 9399405, First Name: Luis, Last Name: Gomez, ID Flight: 1
