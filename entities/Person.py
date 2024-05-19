@@ -31,3 +31,8 @@ class Person:
 # Methods
     def get_info(self):
         return f"Document: {self.__document}, First Name: {self.__first_name}, Last Name: {self.__last_name}"
+
+
+# # example
+# person1 = Person(123456789, "John", "Doe")
+# print(person1.get_info())

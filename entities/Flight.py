@@ -2,7 +2,7 @@
 
 
 # Importing necessary classes
-from Passenger import Passenger
+from passenger import Passenger
 
 # Flight class
 
@@ -93,5 +93,7 @@ class Flight:
 # print(flight1.get_info_and_status())
 # print(flight1.get_passengers_info())
 # passenger1 = Passenger(123456789, "Juan", "Perez", 1)
+# passenger2 = Passenger(987654321, "Maria", "Gomez", 1)
 # flight1.add_passenger(passenger1)
+# flight1.add_passenger(passenger2)
 # print(flight1.get_passengers_info())

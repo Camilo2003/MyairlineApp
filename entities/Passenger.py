@@ -1,6 +1,6 @@
 
 # Importing necessary person class
-from Person import Person
+from person import Person
 
 
 # Creation of the Passenger class
@@ -24,3 +24,8 @@ class Passenger(Person):
     # Methods
     def get_info(self):
         return f"{super().get_info()}, ID Flight: {self.__id_flight}"
+
+
+# # Example
+# passenger1 = Passenger(12321345, "Maria", "Gomez", 1)
+# print(passenger1.get_info())

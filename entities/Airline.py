@@ -1,48 +1,37 @@
-# Creation class Airline
+# This file contains the Airline class, which will manage the flights, airplanes, and passengers of an unique airline.
 
+# import Airplane
+from airplane import Airplane
+
+# import Flight
+from flight import Flight
+
+# import Passenger
+from passenger import Passenger
+
+
+# Creation class Airline
+# This class will manage the flights, airplanes, and passengers of an unique airline.
 # Airline class
 
-class Airline:
-    def __init__(self, name: str, airplanes: list, passengers: list) -> None:
-        self.__name = name
-        self.__airplanes = airplanes
-        self.__passengers = passengers
+# Singleton pattern
+class SingletonMeta(type):
+    """
+    Meta clase para implementar el patrón Singleton.
+    """
+    _instances = {}
 
-    # Getters
-    def get_name(self):
-        return self.__name
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            instance = super().__call__(*args, **kwargs)
+            cls._instances[cls] = instance
+        return cls._instances[cls]
 
-    def get_airplanes(self):
-        return self.__airplanes
 
-    def get_passengers(self):
-        return self.__passengers
+class Airline(metaclass=SingletonMeta):
+    def __init__(self) -> None:
+        self.__flights_list = []
+        self.__airplanes_list = []
 
-    # Setters
-    def set_name(self, name):
-        self.__name = name
-
-    def set_airplanes(self, airplanes):
-        self.__airplanes = airplanes
-
-    def set_passengers(self, passengers):
-        self.__passengers = passengers
-
-    # Methods
     def add_airplane(self, airplane):
-        self.__airplanes.append(airplane)
-
-    def add_passenger(self, passenger):
-        self.__passengers.append(passenger)
-
-    def get_info(self):
-        return f"Airline Name: {self.__name}, Airplanes: {len(self.__airplanes)}, Passengers: {len(self.__passengers)}"
-
-    def get_info_and_status(self):
-        return f"Airline Name: {self.__name}, Airplanes: {len(self.__airplanes)}, Passengers: {len(self.__passengers)}"
-
-    def get_info_airplanes(self):
-        return [airplane.get_info_and_status() for airplane in self.__airplanes]
-
-    def get_info_passengers(self):
-        return [passenger.get_info() for passenger in self.__passengers]
+        self.__airplanes_list.append(airplane)
