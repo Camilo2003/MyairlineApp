@@ -32,6 +32,18 @@ class Airline(metaclass=SingletonMeta):
     def __init__(self) -> None:
         self.__flights_list = []
         self.__airplanes_list = []
+        self.__passengers_list = []
 
-    def add_airplane(self, airplane):
-        self.__airplanes_list.append(airplane)
+    def create_airplane(self, id: int, brand: str, model: str, passenger_capacity: int) -> None:
+        airplane = Airplane(id, brand, model, passenger_capacity)
+        try:
+            with open("airplanes.txt", "a") as file:
+                file.write(f"{airplane.get_info()}\n")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+
+airline = Airline()
+
+airline.create_airplane(1, "Boeing", "747", 416)
+airline.create_airplane(2, "Airbus", "A380", 853)
