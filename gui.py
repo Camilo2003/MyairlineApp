@@ -387,3 +387,36 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = AirlineApp(root)
     root.mainloop()
+
+    # # Initial example
+    # airline = Airline()
+    # airline.create_airplane(1, "Boeing", "747", 416)
+    # airline.create_airplane(2, "Airbus", "A380", 853)
+    # airline.create_airplane(3, "Boeing", "777", 550)
+
+    # airline.create_flight(11001, "Bogota", "Barranquilla",
+    #                       "2021-10-10 06:00", "2021-10-10 07:00", 1)
+    # airline.create_flight(11002, "Bogota", "Bucaramanga",
+    #                       "2021-10-10 08:00", "2021-10-10 09:00", 2)
+    # airline.create_flight(11003, "Bogota", "Medellin",
+    #                       "2021-10-10 10:00", "2021-10-10 11:00", 1)
+    # airline.create_flight(11004, "Bogota", "Cali",
+    #                       "2021-10-10 12:00", "2021-10-10 13:00", 2)
+    # airline.create_flight(11005, "Bogota", "Cartagena",
+    #                       "2021-10-10 14:00", "2021-10-10 15:00", 1)
+    # airline.create_flight(11006, "Bogota", "Santa Marta",
+    #                       "2021-10-10 16:00", "2021-10-10 17:00", 2)
+    # airline.create_flight(11007, "Pereira", "Miami",
+    #                       "2021-11-5 18:00", " 2021-11-5 16:00", 3)
+
+    # airline.create_passenger(888001, "Juan", "Perez", 11001)
+    # airline.create_passenger(888002, "Maria", "Gomez", 11002)
+    # airline.create_passenger(888003, "Luis", "Gonzales", 11003)
+    # airline.create_passenger(888004, "Mario", "Felipe", 11004)
+    # airline.create_passenger(888005, "Alex", "Smith", 11005)
+    # airline.create_passenger(888006, "Jhon", "Doe", 11006)
+    # airline.create_passenger(888007, "Juana", "Pancha", 11007)
+    # airline.create_passenger(888008, "Maria", "Sanchez", 11001)
+    # airline.create_passenger(888009, "Alfredo", "Gutierrez", 11002)
+    # airline.create_passenger(888010, "Luisa", "Gomez", 11003)
+    # airline.create_passenger(888011, "Marlos", "Moreno", 11004)
