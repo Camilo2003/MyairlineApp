@@ -14,7 +14,7 @@ class AirlineApp:
     def __init__(self, root):
         self.root = root  # Root window
         self.root.title("Airline Management System")
-        self.root.geometry("300x500")
+        self.root.geometry("300x600")
         self.airline = Airline()  # Create an instance of the Airline class
         self.create_main_window()  # Call the create_main_window method
 
@@ -64,6 +64,10 @@ class AirlineApp:
         self.button_remove_airplane = ttk.Button(
             self.root, text="Remove Airplane", command=self.open_remove_airplane, width=width_button)
         self.button_remove_airplane.pack(pady=10)
+
+        self_button_exit = ttk.Button(
+            self.root, text="Exit", command=self.root.quit, width=10)
+        self_button_exit.pack(pady=10)
 
     # This method opens the create airplane window
     def open_create_airplane(self):
