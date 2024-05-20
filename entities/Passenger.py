@@ -1,6 +1,6 @@
 
 # Importing necessary person class
-from person import Person
+from entities.person import Person
 
 
 # Creation of the Passenger class

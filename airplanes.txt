@@ -1,1 +1,4 @@
 ID: 1, Brand: Boeing, Model: 747, Passenger Capacity: 416, Is on flight: False
+ID: 777902, Brand: Airbus, Model: 310, Passenger Capacity: 200, Is on flight: False
+ID: 777300, Brand: Boeing, Model: 8000, Passenger Capacity: 100, Is on flight: False
+ID: 312131, Brand: Airbus, Model: 221, Passenger Capacity: 12, Is on flight: False

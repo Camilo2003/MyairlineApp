@@ -2,7 +2,7 @@
 
 
 # Importing necessary classes
-from passenger import Passenger
+from entities.passenger import Passenger
 
 # Flight class
 

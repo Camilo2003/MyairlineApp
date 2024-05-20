@@ -1,13 +1,13 @@
 # This file contains the Airline class, which will manage the flights, airplanes, and passengers of an unique airline.
 
 # import Airplane
-from airplane import Airplane
+from entities.airplane import Airplane
 
 # import Flight
-from flight import Flight
+from entities.flight import Flight
 
 # import Passenger
-from passenger import Passenger
+from entities.passenger import Passenger
 
 
 # Creation class Airline
