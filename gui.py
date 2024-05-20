@@ -56,9 +56,14 @@ class AirlineApp:
         self.button_change_status_flight = ttk.Button(
             self.root, text="Change status flight", command=self.open_change_status_flight, width=width_button)
         self.button_change_status_flight.pack(pady=10)
+
         self.button_remove_passenger = ttk.Button(
             self.root, text="Remove Passenger", command=self.open_remove_passenger, width=width_button)
         self.button_remove_passenger.pack(pady=10)
+
+        self.button_remove_airplane = ttk.Button(
+            self.root, text="Remove Airplane", command=self.open_remove_airplane, width=width_button)
+        self.button_remove_airplane.pack(pady=10)
 
     # This method opens the create airplane window
     def open_create_airplane(self):
@@ -346,6 +351,7 @@ class AirlineApp:
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
 
+    # This method opens the change status flight window
     def open_change_status_flight(self):
         # Create the change status flight window
         self.change_status_flight_window = tk.Toplevel(self.root)
@@ -385,6 +391,7 @@ class AirlineApp:
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
 
+    # This method opens the remove passenger window
     def open_remove_passenger(self):
         # Create the remove passenger window
         self.remove_passenger_window = tk.Toplevel(self.root)
@@ -410,6 +417,39 @@ class AirlineApp:
             # Call the remove_passenger method from the Airline class
             self.airline.remove_passenger(id)
             messagebox.showinfo("Success", "Passenger removed successfully!")
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred: {e}")
+
+    # This opens the remove airplane window
+    def open_remove_airplane(self):
+        # Create the remove airplane window
+        self.remove_airplane_window = tk.Toplevel(self.root)
+        self.remove_airplane_window.title("Remove Airplane")
+
+        # Create the labels and entries
+        self.label_airplane_id = ttk.Label(
+            self.remove_airplane_window, text="Airplane ID")
+        self.label_airplane_id.grid(row=0, column=0, padx=10, pady=10)
+        self.entry_airplane_id = ttk.Entry(self.remove_airplane_window)
+        self.entry_airplane_id.grid(row=0, column=1, padx=10, pady=10)
+
+        self.button_remove_airplane = ttk.Button(
+            self.remove_airplane_window, text="Remove Airplane", command=self.remove_airplane)
+        self.button_remove_airplane.grid(
+            row=1, column=0, columnspan=2, pady=10)
+
+    # This method removes an airplane
+    def remove_airplane(self):
+        try:
+            # Get the value from the entry
+            id = int(self.entry_airplane_id.get())
+            # Call the remove_airplane method from the Airline class
+            success = self.airline.remove_airplane(id)
+            if success:
+                messagebox.showinfo(
+                    "Success", "Airplane removed successfully!")
+            else:
+                messagebox.showerror("Error", "Airplane not found.")
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
 

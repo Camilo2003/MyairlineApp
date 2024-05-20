@@ -1,5 +1,5 @@
 ID: 11001, ID Airplane: 1, Departure: Bogota, Destination: Barranquilla, Departure Time: 2021-10-10 06:00, Arrival Time: 2021-10-10 07:00, Status: Scheduled
-ID: 11002, ID Airplane: 2, Departure: Bogota, Destination: Bucaramanga, Departure Time: 2021-10-10 08:00, Arrival Time: 2021-10-10 09:00, Status: Scheduled
+ID: 11002, ID Airplane: 2, Departure: Bogota, Destination: Bucaramanga, Departure Time: 2021-10-10 08:00, Arrival Time: 2021-10-10 09:00, Status: Cancelled
 ID: 11003, ID Airplane: 1, Departure: Bogota, Destination: Medellin, Departure Time: 2021-10-10 10:00, Arrival Time: 2021-10-10 11:00, Status: Scheduled
 ID: 11004, ID Airplane: 2, Departure: Bogota, Destination: Cali, Departure Time: 2021-10-10 12:00, Arrival Time: 2021-10-10 13:00, Status: Scheduled
 ID: 11005, ID Airplane: 1, Departure: Bogota, Destination: Cartagena, Departure Time: 2021-10-10 14:00, Arrival Time: 2021-10-10 15:00, Status: Scheduled
