@@ -1,2 +1,2 @@
 ID: 3, ID Airplane: 1, Departure: Bogota, Destination: Medellin, Departure Time: 2021-10-10 10:00, Arrival Time: 2021-10-10 11:00, Status: Scheduled
-ID: 5, ID Airplane: 1, Departure: Bogota, Destination: Cartagena, Departure Time: 2021-10-10 14:00, Arrival Time: 2021-10-10 15:00, Status: Scheduled
+ID: 5, ID Airplane: 1, Departure: Bogota, Destination: Cartagena, Departure Time: 2021-10-10 14:00, Arrival Time: 2021-10-10 15:00, Status: Delayed

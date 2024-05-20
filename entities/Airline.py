@@ -53,7 +53,7 @@ class Airline(metaclass=SingletonMeta):
                     line = [i.split(": ")[1] for i in line]
                     # print(line)
                     airplane = Airplane(
-                        line[0], line[1], line[2], line[3], line[4])
+                        line[0], line[1], line[2], line[3])
                     # print(airplane.get_info())
                     self.__airplanes_list.append(airplane)
             return self.__airplanes_list
@@ -199,6 +199,27 @@ class Airline(metaclass=SingletonMeta):
                 return
         print("Airplane not found")
 
+    # This method receives a flight id and returns a list of passengers that are in that flight.
+    def get_passengers_by_flight(self, id_flight):
+        self.get_passengers()
+        id_flight = int(id_flight)
+        passengers = []
+        for passenger in self.__passengers_list:
+            if passenger.get_id_flight() == id_flight:
+                passengers.append(passenger)
+        return passengers
+
+    def change_status_flight(self, id_flight, status):
+        self.get_flights()
+        id_flight = int(id_flight)
+        for flight in self.__flights_list:
+            if flight.get_id() == id_flight:
+                flight.set_status(status)
+                with open("flights.txt", "w") as file:
+                    for flight in self.__flights_list:
+                        file.write(f"{flight.get_info()}\n")
+                return
+        print("Flight not found")
 
 # airline = Airline()
 

@@ -6,7 +6,7 @@ from entities.airline import Airline  # Import the Airline class
 # Create the AirlineApp class
 
 
-width_button = 22
+width_button = 25
 
 
 class AirlineApp:
@@ -49,7 +49,15 @@ class AirlineApp:
             self.root, text="See Passengers", command=self.open_see_passengers, width=width_button)
         self.button_see_passengers.pack(pady=10)
 
+        self.button_see_passengers_on_flight = ttk.Button(
+            self.root, text="Search passengers by flight", command=self.open_search_passengers_by_flight, width=width_button)
+        self.button_see_passengers_on_flight.pack(pady=10)
+
+        self.button_change_status_flight = ttk.Button(
+            self.root, text="Change status flight", command=self.open_change_status_flight, width=width_button)
+        self.button_change_status_flight.pack(pady=10)
     # This method opens the create airplane window
+
     def open_create_airplane(self):
         # Create the create airplane window
         self.create_airplane_window = tk.Toplevel(self.root)
@@ -253,6 +261,7 @@ class AirlineApp:
                 self.see_flights_window, text="No flights found.")
             label_no_flights.pack()
 
+    # This method opens the see passengers window
     def open_see_passengers(self):
         # Create the see passengers window
         self.see_passengers_window = tk.Toplevel(self.root)
@@ -270,6 +279,108 @@ class AirlineApp:
             label_no_passengers = ttk.Label(
                 self.see_passengers_window, text="No passengers found.")
             label_no_passengers.pack()
+
+        def open_see_passengers_by_flight(self):
+            # Create the see passengers by flight window
+            self.see_passengers_by_flight_window = tk.Toplevel(self.root)
+            self.see_passengers_by_flight_window.title(
+                "See Passengers by Flight")
+
+            # Create the labels and entries
+            self.label_flight_id = ttk.Label(
+                self.see_passengers_by_flight_window, text="Flight ID")
+            self.label_flight_id.grid(row=0, column=0, padx=10, pady=10)
+            self.entry_flight_id = ttk.Entry(
+                self.see_passengers_by_flight_window)
+            self.entry_flight_id.grid(row=0, column=1, padx=10, pady=10)
+
+            self.button_see_passengers = ttk.Button(
+                self.see_passengers_by_flight_window, text="See Passengers", command=self.see_passengers_by_flight)
+            self.button_see_passengers.grid(
+                row=1, column=0, columnspan=2, pady=10)
+
+    # This method opens the see passengers by flight window
+    def open_search_passengers_by_flight(self):
+        # Create the search passengers by flight window
+        self.search_passengers_by_flight_window = tk.Toplevel(self.root)
+        self.search_passengers_by_flight_window.title(
+            "Search Passengers by Flight")
+
+        # Create the labels and entries
+        self.label_flight_id = ttk.Label(
+            self.search_passengers_by_flight_window, text="Flight ID")
+        self.label_flight_id.grid(row=0, column=0, padx=10, pady=10)
+        self.entry_flight_id = ttk.Entry(
+            self.search_passengers_by_flight_window)
+        self.entry_flight_id.grid(row=0, column=1, padx=10, pady=10)
+
+        self.button_search_passengers = ttk.Button(
+            self.search_passengers_by_flight_window, text="Search Passengers", command=self.search_passengers_by_flight)
+        self.button_search_passengers.grid(
+            row=1, column=0, columnspan=2, pady=10)
+
+    # This method searches passengers by flight
+    def search_passengers_by_flight(self):
+        try:
+            # Get the value from the entry
+            flight_id = int(self.entry_flight_id.get())
+            # Call the get_passengers_by_flight method from the Airline class
+            passengers = self.airline.get_passengers_by_flight(flight_id)
+            if passengers:
+                # Create the see passengers by flight window
+                self.see_passengers_by_flight_window = tk.Toplevel(
+                    self.root)
+                self.see_passengers_by_flight_window.title(
+                    "Passengers on Flight")
+
+                for passenger in passengers:
+                    passenger_info = passenger.get_info()
+                    label_passenger_info = ttk.Label(
+                        self.see_passengers_by_flight_window, text=passenger_info, font=("Arial", 10))
+                    label_passenger_info.pack(pady=10)
+            else:
+                messagebox.showinfo("Success", "No passengers found.")
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred: {e}")
+
+    def open_change_status_flight(self):
+        # Create the change status flight window
+        self.change_status_flight_window = tk.Toplevel(self.root)
+        self.change_status_flight_window.title("Change Status Flight")
+
+        # Create the labels and comboboxes
+        self.label_flight_id = ttk.Label(
+            self.change_status_flight_window, text="Flight ID")
+        self.label_flight_id.grid(row=0, column=0, padx=10, pady=10)
+        self.entry_flight_id = ttk.Entry(self.change_status_flight_window)
+        self.entry_flight_id.grid(row=0, column=1, padx=10, pady=10)
+
+        # Create the combobox for the status
+        self.label_flight_status = ttk.Label(
+            self.change_status_flight_window, text="Status")
+        self.label_flight_status.grid(row=1, column=0, padx=10, pady=10)
+        self.option_flight_status = ttk.Combobox(
+            self.change_status_flight_window, values=["Scheduled", "Delayed", "Cancelled", "Finished"])
+        self.option_flight_status.grid(row=1, column=1, padx=10, pady=10)
+
+        # Set the initial selection for the combobox
+        self.option_flight_status.set("Scheduled")
+
+        self.button_change_status = ttk.Button(
+            self.change_status_flight_window, text="Change Status", command=self.change_status_flight)
+        self.button_change_status.grid(row=2, column=0, columnspan=2, pady=10)
+
+    # This method changes the status of a flight
+    def change_status_flight(self):
+        try:
+            # Get the values from the entries
+            id = int(self.entry_flight_id.get())
+            status = self.option_flight_status.get()
+            # Call the change_status_flight method from the Airline class
+            self.airline.change_status_flight(id, status)
+            messagebox.showinfo("Success", "Status changed successfully!")
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred: {e}")
 
 
 if __name__ == "__main__":
