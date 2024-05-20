@@ -56,8 +56,11 @@ class AirlineApp:
         self.button_change_status_flight = ttk.Button(
             self.root, text="Change status flight", command=self.open_change_status_flight, width=width_button)
         self.button_change_status_flight.pack(pady=10)
-    # This method opens the create airplane window
+        self.button_remove_passenger = ttk.Button(
+            self.root, text="Remove Passenger", command=self.open_remove_passenger, width=width_button)
+        self.button_remove_passenger.pack(pady=10)
 
+    # This method opens the create airplane window
     def open_create_airplane(self):
         # Create the create airplane window
         self.create_airplane_window = tk.Toplevel(self.root)
@@ -379,6 +382,34 @@ class AirlineApp:
             # Call the change_status_flight method from the Airline class
             self.airline.change_status_flight(id, status)
             messagebox.showinfo("Success", "Status changed successfully!")
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred: {e}")
+
+    def open_remove_passenger(self):
+        # Create the remove passenger window
+        self.remove_passenger_window = tk.Toplevel(self.root)
+        self.remove_passenger_window.title("Remove Passenger")
+
+        # Create the labels and entries
+        self.label_passenger_id = ttk.Label(
+            self.remove_passenger_window, text="Passenger ID")
+        self.label_passenger_id.grid(row=0, column=0, padx=10, pady=10)
+        self.entry_passenger_id = ttk.Entry(self.remove_passenger_window)
+        self.entry_passenger_id.grid(row=0, column=1, padx=10, pady=10)
+
+        self.button_remove_passenger = ttk.Button(
+            self.remove_passenger_window, text="Remove Passenger", command=self.remove_passenger)
+        self.button_remove_passenger.grid(
+            row=1, column=0, columnspan=2, pady=10)  # columnspan unite the columns
+
+    # This method removes a passenger
+    def remove_passenger(self):
+        try:
+            # Get the value from the entry
+            id = int(self.entry_passenger_id.get())
+            # Call the remove_passenger method from the Airline class
+            self.airline.remove_passenger(id)
+            messagebox.showinfo("Success", "Passenger removed successfully!")
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
 
