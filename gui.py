@@ -174,9 +174,12 @@ class AirlineApp:
             arrival_time = self.entry_flight_arrival.get()
             airplane_id = int(self.entry_flight_airplane_id.get())
             # Call the create_flight method from the Airline class
-            self.airline.create_flight(
+            succes = self.airline.create_flight(
                 id, origin, destination, departure_time, arrival_time, airplane_id)
-            messagebox.showinfo("Success", "Flight created successfully!")
+            if succes:
+                messagebox.showinfo("Success", "Flight created successfully!")
+            else:
+                messagebox.showerror("Error", "Airplane not found.")
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
 
@@ -225,9 +228,13 @@ class AirlineApp:
             last_name = self.entry_passenger_last_name.get()
             id_flight = int(self.entry_passenger_flight_id.get())
             # Call the create_passenger method from the Airline class
-            self.airline.create_passenger(
+            succes = self.airline.create_passenger(
                 document, first_name, last_name, id_flight)
-            messagebox.showinfo("Success", "Passenger created successfully!")
+            if succes:
+                messagebox.showinfo(
+                    "Success", "Passenger created successfully!")
+            else:
+                messagebox.showerror("Error", "Flight not found.")
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
 
@@ -288,26 +295,8 @@ class AirlineApp:
                 self.see_passengers_window, text="No passengers found.")
             label_no_passengers.pack()
 
-        def open_see_passengers_by_flight(self):
-            # Create the see passengers by flight window
-            self.see_passengers_by_flight_window = tk.Toplevel(self.root)
-            self.see_passengers_by_flight_window.title(
-                "See Passengers by Flight")
-
-            # Create the labels and entries
-            self.label_flight_id = ttk.Label(
-                self.see_passengers_by_flight_window, text="Flight ID")
-            self.label_flight_id.grid(row=0, column=0, padx=10, pady=10)
-            self.entry_flight_id = ttk.Entry(
-                self.see_passengers_by_flight_window)
-            self.entry_flight_id.grid(row=0, column=1, padx=10, pady=10)
-
-            self.button_see_passengers = ttk.Button(
-                self.see_passengers_by_flight_window, text="See Passengers", command=self.see_passengers_by_flight)
-            self.button_see_passengers.grid(
-                row=1, column=0, columnspan=2, pady=10)
-
     # This method opens the see passengers by flight window
+
     def open_search_passengers_by_flight(self):
         # Create the search passengers by flight window
         self.search_passengers_by_flight_window = tk.Toplevel(self.root)
@@ -386,8 +375,11 @@ class AirlineApp:
             id = int(self.entry_flight_id.get())
             status = self.option_flight_status.get()
             # Call the change_status_flight method from the Airline class
-            self.airline.change_status_flight(id, status)
-            messagebox.showinfo("Success", "Status changed successfully!")
+            succes = self.airline.change_status_flight(id, status)
+            if succes:
+                messagebox.showinfo("Success", "Status changed successfully!")
+            else:
+                messagebox.showerror("Error", "Flight not found.")
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
 
@@ -415,8 +407,12 @@ class AirlineApp:
             # Get the value from the entry
             id = int(self.entry_passenger_id.get())
             # Call the remove_passenger method from the Airline class
-            self.airline.remove_passenger(id)
-            messagebox.showinfo("Success", "Passenger removed successfully!")
+            succes = self.airline.remove_passenger(id)
+            if succes:
+                messagebox.showinfo(
+                    "Success", "Passenger removed successfully!")
+            else:
+                messagebox.showerror("Error", "Passenger not found.")
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
 

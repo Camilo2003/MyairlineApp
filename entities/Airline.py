@@ -10,11 +10,6 @@ from entities.flight import Flight
 from entities.passenger import Passenger
 
 
-# Creation class Airline
-# This class will manage the flights, airplanes, and passengers of an unique airline.
-# Airline class
-
-# Singleton pattern
 class SingletonMeta(type):
     """
     Meta clase para implementar el patrón Singleton.
@@ -26,6 +21,12 @@ class SingletonMeta(type):
             instance = super().__call__(*args, **kwargs)
             cls._instances[cls] = instance
         return cls._instances[cls]
+
+# Class Airline
+
+# Creation class Airline
+# This class will manage the flights, airplanes, and passengers of an unique airline.
+# Airline class
 
 
 class Airline(metaclass=SingletonMeta):
@@ -79,10 +80,12 @@ class Airline(metaclass=SingletonMeta):
             try:
                 with open("flights.txt", "a") as file:
                     file.write(f"{new_flight.get_info()}\n")
+                    return True
             except Exception as e:
                 print(f"An error occurred: {e}")
         else:
             print("Airplane not found")
+            return False
 
     # This method gets the flights from the flights.txt file and add them to the flights list, and then returns the flight list.
     def get_flights(self):
@@ -118,10 +121,12 @@ class Airline(metaclass=SingletonMeta):
                 print(passenger.get_info())
                 with open("passengers.txt", "a") as file:
                     file.write(f"{passenger.get_info()}\n")
+                    return True
             except Exception as e:
                 print(f"An error occurred: {e}")
         else:
             print("Flight not found")
+            return False
 
     # This method gets the passengers from the passengers.txt file and add them to the passengers list, and then returns the passenger list.
     def get_passengers(self):
@@ -157,8 +162,9 @@ class Airline(metaclass=SingletonMeta):
                 with open("passengers.txt", "w") as file:
                     for passenger in self.__passengers_list:
                         file.write(f"{passenger.get_info()}\n")
-                return
+                return True
         print("Passenger not found")
+        return False
 
     # # This method receives a flight id and removes the flight from the flights list and the flights.txt file, and also removes all passengers from the passengers list and the passengers.txt file.
     # def remove_flight(self, id_flight):
@@ -230,5 +236,6 @@ class Airline(metaclass=SingletonMeta):
                 with open("flights.txt", "w") as file:
                     for flight in self.__flights_list:
                         file.write(f"{flight.get_info()}\n")
-                return
+                return True
         print("Flight not found")
+        return False

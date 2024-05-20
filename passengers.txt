@@ -10,3 +10,4 @@ Document: 888009, First Name: Alfredo, Last Name: Gutierrez, ID Flight: 11002
 Document: 888010, First Name: Luisa, Last Name: Gomez, ID Flight: 11003
 Document: 888011, First Name: Marlos, Last Name: Moreno, ID Flight: 11004
 Document: 88021, First Name: Camilo, Last Name: Muñoz, ID Flight: 11007
+Document: 888021, First Name: Leopoldo, Last Name: suarez, ID Flight: 11007

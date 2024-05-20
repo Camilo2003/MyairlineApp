@@ -5,3 +5,4 @@ ID: 11004, ID Airplane: 2, Departure: Bogota, Destination: Cali, Departure Time:
 ID: 11005, ID Airplane: 1, Departure: Bogota, Destination: Cartagena, Departure Time: 2021-10-10 14:00, Arrival Time: 2021-10-10 15:00, Status: Scheduled
 ID: 11006, ID Airplane: 2, Departure: Bogota, Destination: Santa Marta, Departure Time: 2021-10-10 16:00, Arrival Time: 2021-10-10 17:00, Status: Scheduled
 ID: 11007, ID Airplane: 3, Departure: Pereira, Destination: Miami, Departure Time: 2021-11-5 18:00, Arrival Time:  2021-11-5 16:00, Status: Delayed
+ID: 11008, ID Airplane: 3, Departure: Mocoa, Destination: Cartagena, Departure Time: 2024-01-27 7:00, Arrival Time: 2024-01-27 8:00, Status: Finished
