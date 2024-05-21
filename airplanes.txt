@@ -1,3 +1,4 @@
 ID: 1, Brand: Boeing, Model: 747, Passenger Capacity: 416
 ID: 2, Brand: Airbus, Model: A380, Passenger Capacity: 853
 ID: 3, Brand: Boeing, Model: 777, Passenger Capacity: 550
+ID: 4, Brand: Fokker, Model: A234, Passenger Capacity: 110
