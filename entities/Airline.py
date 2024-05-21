@@ -166,45 +166,6 @@ class Airline(metaclass=SingletonMeta):
         print("Passenger not found")
         return False
 
-    # # This method receives a flight id and removes the flight from the flights list and the flights.txt file, and also removes all passengers from the passengers list and the passengers.txt file.
-    # def remove_flight(self, id_flight):
-    #     self.get_flights()  # Call the method to get the flights from the file to the list
-    #     self.get_passengers()  # Call the method to get the passengers from the file to the list
-    #     for flight in self.__flights_list:
-    #         if flight.get_id() == id_flight:
-    #             self.__flights_list.remove(flight)
-    #             with open("flights.txt", "w") as file:
-    #                 for flight in self.__flights_list:
-    #                     file.write(f"{flight.get_info()}\n")
-    #             # Remove all passengers from the flight because the flight is being removed
-    #             for passenger in self.__passengers_list:
-    #                 if passenger.get_id_flight() == id_flight:
-    #                     self.__passengers_list.remove(passenger)
-    #                     with open("passengers.txt", "w") as file:
-    #                         for passenger in self.__passengers_list:
-    #                             file.write(f"{passenger.get_info()}\n")
-    #             return
-    #     print("Flight not found")
-
-    # # This method receives an airplane id and removes the airplane from the airplanes list and the airplanes.txt file, and also removes all flights from the flights list and the flights.txt file.
-    # def remove_airplane(self, id_airplane):
-    #     self.get_passengers()  # Call the method to get the passengers from the file to the list
-    #     self.get_flights()  # Call the method to get the flights from the file to the list
-    #     self.get_airplanes()  # Call the method to get the airplanes from the file to the list
-
-    #     for airplane in self.__airplanes_list:
-    #         if airplane.get_id() == id_airplane:
-    #             self.__airplanes_list.remove(airplane)
-    #             with open("airplanes.txt", "w") as file:
-    #                 for airplane in self.__airplanes_list:
-    #                     file.write(f"{airplane.get_info()}\n")
-    #             # Remove all flights from the airplane because the airplane is being removed
-    #             for flight in self.__flights_list:
-    #                 if flight.get_id_airplane() == id_airplane:
-    #                     self.remove_flight(flight.get_id())
-    #             return
-    #     print("Airplane not found")
-
     def remove_airplane(self, id_airplane):
         self.get_airplanes()
         for airplane in self.__airplanes_list:
